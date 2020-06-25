@@ -4,4 +4,11 @@ if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 
+use Rack::MethodOverride
+use SessionsController
+use FriendsController
+use PantriesController
+use UsersController
 run ApplicationController
+
+
