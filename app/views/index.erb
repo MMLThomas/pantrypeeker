@@ -1,1 +1,22 @@
-<h1>This Is The Main PantryPeeker Page</h1>
+<h1><center>This Is The Main PantryPeeker Page</center></h1>
+<br>
+<br>
+<br>
+<h2><center>Login below or click signup to create a new account</center></h2>
+<%if @error == true%>
+<center><h3> that username or password does not match our records </h3></center>
+<% end %>
+<center>
+<form action="/login" method="POST">
+<ul>
+<label for="username">username</label>
+<input id="username" type="text" name="username">
+<label for="password">password</label>
+<input id="password" type="text" name="password">
+<input id="submit" type="submit" name="Submit">
+</ul>
+</form><br>
+<form action="/signup" method="GET">
+<button type="submit" name="signup">Sign Up</button>
+</center>
+

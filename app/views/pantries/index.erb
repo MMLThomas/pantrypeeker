@@ -1,1 +1,19 @@
+<center>
 <h1>Here You Can View All The Items In A Pantry</h1>
+<%if @pantry.groceries.empty?%>
+    <h2> Your pantry is curently empty, click below to add items</h2>
+    <form action="/pantries/new" method="GET">
+    <input type="submit" value="ADD">
+    </form>
+<% else %>
+    <%@pantry.groceries.each do |grocery| %>
+   <h3> <%="#{grocery.count} #{grocery.name} Expiring: #{grocery.expiration_date.to_date}"%> </h3>
+    <form action="/pantries/<%=grocery.id%>" method="GET">
+    <input type="submit" value="VIEW"/>
+    </form><br>
+    <% end %>
+<% end %>
+
+
+
+</center>

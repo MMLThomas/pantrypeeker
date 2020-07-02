@@ -1,1 +1,39 @@
-<h1>Here Can Edit Your Picture/Email/Password</h1>
+<h1>Here Can Edit Your Username/Email/Password</h1>
+
+<!-- Form to verify and change password -->
+<form action="/users/<%=@user.username%>" method="POST">  
+<h3>  
+    <label for="password">Change Password </label><br>
+    <%if @password_error%><%=@password_error%><br><% end %>
+    <input id="hidden" type="hidden" name="_method" value="PATCH"/>
+    <input id="password" type="text" name="current-password"> Current Password</input><br>
+    <input id="password" type="text" name="new-password"> New Password</input><br>
+    <input id="password" type="text" name="confirmed-new-password"> Re-enter New Password</input><br>
+    <button id="password-button" type="submit" name="submit">Submit</button><br><br>
+</h3>
+</form>
+
+<!-- Form to change username -->
+<form action="/users/<%=@user.username%>" method="POST">   
+<h3>
+    <input id="hidden" type="hidden" name="_method" value="PATCH"/>
+    <label for="username">Update Username</label><br>
+    <%if @username_error%><%=@username_error%><br><% end %>
+    <input id="username" type="text" name="username" value="<%=@user.username%>"> Username</input><br>
+    <button id="username-button" type="submit" name="submit">Submit</button><br><br>
+</h3>
+</form>
+
+<!-- Form to verify and change email -->
+<form action="/users/<%=@user.username%>" method="POST">
+    <h3>
+    <input id="hidden" type="hidden" name="_method" value="PATCH"/>
+    <label for="email">Change Email Adress</label><br>
+    <%if @email_error%><%=@email_error%><br><% end %>
+    <input id="email" type="text" name="email"> New Email</input><br>
+    <input id="email" type="text" name="confirmed-email"> Re-enter Email</input><br>
+    <button id="email-button" type="submit" name="submit">Submit</button>
+    </h3>
+</form>
+
+

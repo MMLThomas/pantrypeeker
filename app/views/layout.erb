@@ -16,19 +16,27 @@
   <body>
     <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">PantryPeeker</a>
+      <a href="/" class="brand-logo">PantryPeeker</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a class="/" href="sass.html">HOME</a></li>
+        <li><a class="/" href="/users/:id">HOME</a></li>
         <li><a href="/friends/:index">Friends</a></li>
-        <li><a href="/pantries/:index">My Pantry</a></li>
-        <li><a href="pantries/:new">Add Groceries</a></li>
+        <li><a href="/pantries">My Pantry</a></li>
+        <li><a href="/pantries/new">Add Groceries</a></li>
+        <%if session[:user_id]%>
+        <li><a href="/users/:id/update">Account</a></li>
+        <% end %>
       </ul>
+      <%if session[:user_id]%>
+        <form action="/logout" method="POST">
+        <a><input id="logout" type="submit" name="logout" value="logout"></a>
+        </form>
+        <% end %>
     </div>
   </nav>
     
     
     <div class="wrapper">
-
+  
         <%= yield %>
 
       <footer class="branding">

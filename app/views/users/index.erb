@@ -1,1 +1,30 @@
-<h1>Here You See Your Home Page</h1>
+<center><h1>Here You See Your Home Page</h1></center> 
+<%if @user.pantries.empty?%>
+    <center>
+    <h2>Start by creating your pantry!</h2>
+    <form action="/pantries/new" method="GET">
+    <label for="name">Give your pntry a name</label>
+    <input id="name" type="text" name="name" />
+    <input id="is_fullhidden" type="hidden" name="is_full" value="false"/>
+    <input id="create" type="submit" name="Create" value="Create"/>
+    </form>
+    </center>
+<% else %>
+    <center><h2>Heres A Look Into Your Pantry</h2></center>
+    <h3>Is Full: <%=@pantry.is_full?%></h3>
+    <h3>Number of expired items: <%=Pantry.number_of_expired_items(@pantry.id)%></h3>
+    <center>
+    <%if Pantry.expired_items(@pantry.id)%>
+        <center><h2>These items in your pantry are expired</h2></center>
+        <% Pantry.expired_items(@pantry.id).each do |item| %>
+                <h3> <%= item.name %> </h3><br>
+        <form action="/pantries/<%=item.id%>" method="GET">
+            <input type="submit" value="VIEW"/>
+        </form><br>
+        <% end %>
+    <% end %>
+
+
+
+    </center>
+<% end %>
