@@ -2,7 +2,11 @@ class FriendsController < ApplicationController
 
     #show friends list and friend request
     get "/friends" do
-        erb :"/friends/index"
+        if logged_in?(session) 
+            erb :"/friends/index"
+        else
+            redirect "/"
+        end
     end
 
     #shows a selected friends page and pantry
@@ -22,7 +26,7 @@ class FriendsController < ApplicationController
 
     #deletes friend if user presses delete friend button
     delete "/friends" do
-        ""
+        
     end
 
 end

@@ -41,7 +41,6 @@ class UsersController < ApplicationController
 
 
     patch '/users/:id' do
-        #binding.pry
         @user = current_user(session)
         #updates users password
         if params["new-password"]
@@ -81,7 +80,9 @@ class UsersController < ApplicationController
 
 
     delete "/users/:id" do
-        
+        User.delete(params[:id])
+        session.clear
+        redirect "/"
     end
 
     

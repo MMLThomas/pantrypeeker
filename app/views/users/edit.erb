@@ -1,4 +1,4 @@
-<h1>Here Can Edit Your Username/Email/Password</h1>
+<h1>Edit Your Account Details Below</h1><br><br>
 
 <!-- Form to verify and change password -->
 <form action="/users/<%=@user.username%>" method="POST">  
@@ -6,9 +6,9 @@
     <label for="password">Change Password </label><br>
     <%if @password_error%><%=@password_error%><br><% end %>
     <input id="hidden" type="hidden" name="_method" value="PATCH"/>
-    <input id="password" type="text" name="current-password"> Current Password</input><br>
-    <input id="password" type="text" name="new-password"> New Password</input><br>
-    <input id="password" type="text" name="confirmed-new-password"> Re-enter New Password</input><br>
+    <input id="password" type="password" name="current-password" required> Current Password</input><br>
+    <input id="password" type="text" name="new-password" required> New Password</input><br>
+    <input id="password" type="text" name="confirmed-new-password" required> Re-enter New Password</input><br>
     <button id="password-button" type="submit" name="submit">Submit</button><br><br>
 </h3>
 </form>
@@ -30,10 +30,18 @@
     <input id="hidden" type="hidden" name="_method" value="PATCH"/>
     <label for="email">Change Email Adress</label><br>
     <%if @email_error%><%=@email_error%><br><% end %>
-    <input id="email" type="text" name="email"> New Email</input><br>
-    <input id="email" type="text" name="confirmed-email"> Re-enter Email</input><br>
+    <input id="email" type="email" name="email" required> New Email</input><br>
+    <input id="email" type="email" name="confirmed-email" required> Re-enter Email</input><br>
     <button id="email-button" type="submit" name="submit">Submit</button>
     </h3>
 </form>
 
+<!-- Button to delete a users account-->
+<br><br>
+<h2>
+<form action="/users/<%=@user.id%>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="delete">
+<input type="submit" name="delete" value="delete user">
+</form>
+</h2>
 

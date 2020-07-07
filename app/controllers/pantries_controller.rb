@@ -36,8 +36,12 @@ class PantriesController < ApplicationController
     end
 
     #edits grocery items and updates pantry
-    put "/pantries" do
-        
+    patch "/pantries/:id" do
+        params.delete("_method")
+        params.delete("edit")
+        @grocery = Grocery.find_by_id(params[:id])
+        @grocery.update(params)
+        redirect "/pantries/#{@grocery.id}"
     end
 
     #deletes items from pantry
