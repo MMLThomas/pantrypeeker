@@ -1,6 +1,11 @@
-<center><h1>Signup for a new Pantry Peeker account</h1></center>
-<br><br>
 <center>
+<h1>Signup for a new Pantry Peeker account</h1>
+<br>
+<%if @username_error%>
+    <%=@username_error%> <br>
+<% end %>
+<br>
+
 <form action="/signup" method="POST">
 <label for="email">email</label>
 <input id="email" type= "email" name="email" required>

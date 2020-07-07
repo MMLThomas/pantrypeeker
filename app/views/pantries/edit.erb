@@ -1,17 +1,17 @@
 <center>
-<h1>Edit <%=@grocery.name%> Below</h1><br><br>
-<h3>
-<form action="/pantries/<%=@grocery.id%>" method="POST">
-<input id="hidden" type="hidden" name="_method" value="patch">
-<label for="name">Name</label>
-<input id="name" type="text" name="name" value=<%=@grocery.name%> required><br>
-<label for="count">Quantity</label>
-<input id="count" type="number" name="count" value=<%=@grocery.count%> required><br>
-<label for="purchase_date">Purchase date</label>
-<input id="purchase_date" type="date" name="purchase_date" value=<%=@grocery.purchase_date%>><br>
-<label for="expiration_date">Expiration date</label>
-<input id="expiration_date" type="date" name="expiration_date" value=<%=@grocery.expiration_date%>><br>
-<input type="submit" name="edit" value="submit edits">
-</form>
-</h3>
+    <h1>Edit <%=@grocery.name%> Below</h1><br><br>
+    <h3>
+        <form action="/pantries/<%=@grocery.id%>" method="POST">
+            <input id="hidden" type="hidden" name="_method" value="patch">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" value=<%=@grocery.name%> required><br>
+            <label for="count">Quantity</label>
+            <input id="count" type="number" name="count" value=<%=@grocery.count%> required><br>
+            <label for="purchase_date">Purchase date</label>
+            <input id="purchase_date" type="date" name="purchase_date" value=<%=@grocery.purchase_date%>required><br>
+            <label for="expiration_date">Expiration date</label>
+            <input id="expiration_date" type="date" name="expiration_date" value=<%=@grocery.expiration_date%>required><br>
+            <input type="submit" name="edit" value="submit edits">
+        </form>
+    </h3>
 </center>

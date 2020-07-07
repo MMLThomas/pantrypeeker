@@ -11,10 +11,15 @@ class UsersController < ApplicationController
 
     #creates a new user
     post "/signup" do
-        params.delete("signup")
-        @user = User.create(params)
-        session[:user_id] = @user.id
-        redirect "/users/:id"
+        if !User.existing_username?(params) 
+            params.delete("signup")
+            @user = User.create(params)
+            session[:user_id] = @user.id
+            redirect "/users/:id"
+        else 
+            @username_error = "Selected Username unavailable, try again"
+            erb :'/users/new'
+        end
     end
 
     #recieves users info from form and logs them in

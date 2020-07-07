@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
    end
 
    def self.emails_match?(params)
-        params["email"] == params["cconfirmed-email"]
+        params["email"] == params["confirmed-email"]
    end
 
 
