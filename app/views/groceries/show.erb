@@ -4,10 +4,10 @@
 <h3>Count: <%=@grocery.count%></h2>
 <h3>Purchase Date: <%=@grocery.purchase_date.to_date%></h3>
 <h3>Expiration Date: <%=@grocery.expiration_date.to_date%></h3>
-<form action="/pantries/<%=@grocery.id%>/edit" method="GET">
+<form action="/groceries/<%=@grocery.id%>/edit" method="GET">
 <input type="submit" name="edit" value="edit item">
 </form><br>
-<form action="/pantries/<%=@grocery.id%>" method="POST">
+<form action="/groceries/<%=@grocery.id%>" method="POST">
 <input id="hidden" type="hidden" name="_method" value="delete">
 <input type="submit" name="delete" value="delete item">
 </form>

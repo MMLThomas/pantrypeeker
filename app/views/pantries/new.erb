@@ -1,20 +1,12 @@
 <center>
-<%if @user.pantries.empty?%>
-    <h1>Please create a pantry to add groceries<h1>
-<% else %>
-    <h1>Add An Item To your Pantry</h1>
-        <h3>
-            <form action="/pantries" method="POST">
-                <label for="name">Enter the items name</label>
-                <input id="name" type="text" name="name" required><br>
-                <label for="count">What is the quantity?</label>
-                <input id="count" type="number" name="count"required><br>
-                <label for="purchase_date">What is the purchase date?</label>
-                <input id="purchase_date" type="date" name="purchase_date"required><br>
-                <label for="expiration_date">What is the expiration date?</label>
-                <input id="expiration_date" type="date" name="expiration_date"required><br>
-                <input id="add" type="submit" name="add"/>
-            </form>
-        </h3>
-<% end %>
+
+<h1>Welcome <%=@user.username%>!</h1><br>
+
+    <h2>Start by creating your pantry</h2>
+    <form action="/pantries" method="POST">
+    <label for="name">Give your pantry a name</label>
+    <input id="name" type="text" name="name" required>
+    <input id="is_full_hidden" type="hidden" name="is_full" value="false"/>
+    <input id="create" type="submit" name="Create" value="Create"/>
+    </form>
 </center>

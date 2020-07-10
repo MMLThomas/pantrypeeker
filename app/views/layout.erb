@@ -19,10 +19,10 @@
       <a href="/" class="brand-logo">PantryPeeker</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="/" href="/">HOME</a></li>
-        <li><a href="/pantries">My Pantry</a></li>
-        <li><a href="/pantries/new">Add Groceries</a></li>
+        <li><a href="/groceries">My Pantry</a></li>
+        <li><a href="/groceries/new">Add Groceries</a></li>
         <%if session[:user_id]%>
-        <li><a href="/users/:id/update">Account</a></li>
+        <li><a href="/users/update">Account</a></li>
         <% end %>
       </ul>
       <%if session[:user_id]%>

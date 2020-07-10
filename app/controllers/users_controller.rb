@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     #checks if user is logged in, if they are not it sends them to signup page
     get "/signup" do
         if logged_in?(session) 
-            edirect '/users'
+            redirect '/users'
         else
             erb :'/users/new'
         end
@@ -11,11 +11,10 @@ class UsersController < ApplicationController
 
     #creates a new user
     post "/signup" do
-        if !User.existing_username?(params) 
-            params.delete("signup")
-            @user = User.create(params)
+        if !User.existing_username?(params)
+            @user = User.create(params["user"])
             session[:user_id] = @user.id
-            redirect "/users/:id"
+            redirect "/users"
         else 
             @username_error = "Selected Username unavailable, try again"
             erb :'/users/new'
@@ -23,8 +22,9 @@ class UsersController < ApplicationController
     end
 
     #recieves users info from form and logs them in
-    get "/users/:id" do
+    get "/users" do
         if logged_in?(session)
+            pantry_check(session)
             @user = current_user(session)
             @pantry = @user.pantries.first
             erb :"/users/index" 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     end
 
     #takes user to the account edit page if logged in
-    get "/users/:id/update" do
+    get "/users/update" do
         if logged_in?(session)
             @user= current_user(session) 
             erb :"/users/edit" 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
 
 
-    patch '/users/:id' do
+    patch '/users' do
         @user = current_user(session)
         #updates users password
         if params["new-password"]
@@ -53,7 +53,6 @@ class UsersController < ApplicationController
                 @user.password = params["new-password"]
             else
                 @password_error = "Please make sure you enter correct password and passwords match"
-        
             end
         end
 
@@ -63,7 +62,6 @@ class UsersController < ApplicationController
                 @user.email = params["email"]
             else
                 @email_error = "please make sure emails match"
-        
             end
         end
 
@@ -79,12 +77,12 @@ class UsersController < ApplicationController
         erb :"users/edit"
         else
             @user.save
-            redirect "/users/:id/update"
+            redirect "/users/update"
         end
     end
 
 
-    delete "/users/:id" do
+    delete "/users" do
         User.delete(params[:id])
         session.clear
         redirect "/"

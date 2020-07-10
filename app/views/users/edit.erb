@@ -1,7 +1,7 @@
 <h1>Edit Your Account Details Below</h1><br><br>
 
 <!-- Form to verify and change password -->
-<form action="/users/<%=@user.username%>" method="POST">  
+<form action="/users" method="POST">  
 <h3>  
     <label for="password">Change Password </label><br>
     <%if @password_error%><%=@password_error%><br><% end %>
@@ -14,7 +14,7 @@
 </form>
 
 <!-- Form to change username -->
-<form action="/users/<%=@user.username%>" method="POST">   
+<form action="/users" method="POST">   
 <h3>
     <input id="hidden" type="hidden" name="_method" value="PATCH"/>
     <label for="username">Update Username</label><br>
@@ -25,7 +25,7 @@
 </form>
 
 <!-- Form to verify and change email -->
-<form action="/users/<%=@user.username%>" method="POST">
+<form action="/users" method="POST">
     <h3>
     <input id="hidden" type="hidden" name="_method" value="PATCH"/>
     <label for="email">Change Email Adress</label><br>
@@ -39,7 +39,7 @@
 <!-- Button to delete a users account-->
 <br><br>
 <h2>
-<form action="/users/<%=@user.id%>" method="POST">
+<form action="/users" method="POST">
 <input id="hidden" type="hidden" name="_method" value="delete">
 <input type="submit" name="delete" value="delete user">
 </form>
