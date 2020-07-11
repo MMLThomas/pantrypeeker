@@ -1,0 +1,17 @@
+<center><h1>Welcome <%=@user.username%>!</h1></center><br>
+
+    <center><h2>Heres A Look Into Your Pantry</h2></center>
+    <h3>Is Full: <%=@pantry.is_full?%></h3>
+    <h3>Number of expired items: <%=Pantry.number_of_expired_items(@pantry.id)%></h3>
+    <center><br><br>
+    <%if !Pantry.expired_items(@pantry.id).empty?%>
+        <center><h2>These items in your pantry are expired</h2></center>
+        <% Pantry.expired_items(@pantry.id).each do |item| %>
+                <h3> <%= item.name %> </h3><br>
+        <form action="/pantries/<%=item.id%>" method="GET">
+            <input type="submit" value="VIEW"/>
+        </form><br>
+        <% end %>
+    <% else %>
+        <center><h2>You have no expired items in your pantry to view</h2></center>
+    <% end %>

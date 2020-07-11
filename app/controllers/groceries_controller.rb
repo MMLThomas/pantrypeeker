@@ -1,4 +1,4 @@
-class PantriesController < ApplicationController
+class GroceriesController < ApplicationController
 
     #takes user to their pantry
     get "/groceries" do
@@ -46,6 +46,7 @@ class PantriesController < ApplicationController
 
     #edits grocery items and updates pantry
     patch "/groceries/:id" do
+        users_grocery_data_protection(session)
         @grocery = Grocery.find_by_id(params[:id])
         @grocery.update(params["grocery"])
         redirect "/groceries/#{@grocery.id}"
